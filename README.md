@@ -1,2 +1,1 @@
-README for blognr
-==========================
+Blog web application in Java Spring framework.
