@@ -1,6 +1,6 @@
 package com.ronniegnr.app.service;
 
-import com.ronniegnr.app.model.User;
+import com.ronniegnr.app.entity.User;
 
 public interface UserService {
     User getUser(int id);

@@ -1,4 +1,4 @@
-package com.ronniegnr.app.model;
+package com.ronniegnr.app.entity;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -14,15 +14,9 @@ import java.util.List;
 @Table(name = "user")
 public class User {
 
-    public enum Sex {
-        MALE, FEMALE
-    }
-    public enum Type {
-        USER, ADMIN
-    }
-    public enum Status {
-        PENDING, ACTIVE, INACTIVE
-    }
+    public enum Sex { MALE, FEMALE }
+    public enum Type { USER, ADMIN }
+    public enum Status { PENDING, ACTIVE, INACTIVE }
 
     private int id;
     private String name;
@@ -38,6 +32,7 @@ public class User {
     private Timestamp updated;
 
     private List<Post> posts;
+    private List<Comment> comments;
 
     public User()
     {
@@ -110,7 +105,6 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    @Length(max = 63)
     @Enumerated(EnumType.STRING)
     @Column(name = "sex")
     public Sex getSex() {
@@ -131,7 +125,6 @@ public class User {
     }
 
     @NotNull
-    @Length(max = 63)
     @Enumerated(EnumType.STRING)
     @Column(name = "type")
     public Type getType() {
@@ -143,7 +136,6 @@ public class User {
     }
 
     @NotNull
-    @Length(max = 63)
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     public Status getStatus() {
@@ -174,13 +166,22 @@ public class User {
         this.updated = updated;
     }
 
-    @OneToMany(mappedBy = "user")
-    public List<Post> getBlogs() {
+    @OneToMany(mappedBy = "user") // user is property of relationship holding table
+    public List<Post> getPosts() {
         return posts;
     }
 
-    public void setBlogs(List<Post> posts) {
+    public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    @OneToMany(mappedBy = "user")
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     @Override

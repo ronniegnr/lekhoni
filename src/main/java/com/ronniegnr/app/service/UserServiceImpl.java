@@ -1,6 +1,6 @@
 package com.ronniegnr.app.service;
 
-import com.ronniegnr.app.model.User;
+import com.ronniegnr.app.entity.User;
 import com.ronniegnr.app.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ class UserServiceImpl implements UserService {
     @Override
     public User getUser(int id)
     {
-        return userRepository.findById(id);
+        return userRepository.findOne(id);
     }
 
     @Override

@@ -1,39 +1,38 @@
-package com.ronniegnr.app.model;
+package com.ronniegnr.app.entity;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
-@Table(name = "post")
-public class Post {
+@Table(name = "comment")
+public class Comment {
 
-    public enum Status {
-        ACTIVE, INACTIVE
-    };
+    public enum Status {ACTIVE, INACTIVE}
 
     private int id;
     private int userId;
-    private String title;
+    private int postId;
     private String content;
-    private Status status;
+    Status status;
     private Timestamp created;
     private Timestamp updated;
 
     private User user;
-    //private List<Tag> tags;
+    private Post post;
 
-    public Post() {}
+    public Comment() {
+        this.status = Status.ACTIVE;
+        this.created = new Timestamp(new Date().getTime());
+    }
 
     @Id
-    @NotNull
-    @Column(name = "id", unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -43,7 +42,7 @@ public class Post {
     }
 
     @NotNull
-    @Column(name = "user_id", updatable = false, insertable = false)
+    @Column(name = "user_id", insertable = false, updatable = false)
     public int getUserId() {
         return userId;
     }
@@ -52,15 +51,14 @@ public class Post {
         this.userId = userId;
     }
 
-    @NotBlank
-    @Length(max = 1023)
-    @Column(name = "title")
-    public String getTitle() {
-        return title;
+    @NotNull
+    @Column(name = "post_id", insertable = false, updatable = false)
+    public int getPostId() {
+        return postId;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setPostId(int postId) {
+        this.postId = postId;
     }
 
     @NotBlank
@@ -116,17 +114,28 @@ public class Post {
         this.user = user;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
     @Override
     public String toString() {
-        return "Blog{" +
+        return "Comment{" +
             "id=" + id +
             ", userId=" + userId +
-            ", title='" + title + '\'' +
+            ", postId=" + postId +
             ", content='" + content + '\'' +
             ", status=" + status +
             ", created=" + created +
             ", updated=" + updated +
+            ", user=" + user +
+            ", post=" + post +
             '}';
     }
-
 }

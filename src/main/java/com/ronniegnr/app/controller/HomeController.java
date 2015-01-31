@@ -1,7 +1,6 @@
 package com.ronniegnr.app.controller;
 
-import com.ronniegnr.app.model.User;
-import com.ronniegnr.app.model.Post;
+import com.ronniegnr.app.entity.User;
 //import main.java.com.ronniegnr.app.service.BlogService;
 import com.ronniegnr.app.service.UserService;
 
@@ -16,12 +15,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
 
     @Autowired
-    private UserService userService;
+    private UserService usService;
 
     @RequestMapping("/")
     public String index(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
-        return "index";
+        return "pindex";
     }
 
     @RequestMapping("/user")
@@ -30,21 +29,25 @@ public class HomeController {
 
         //Blog blog = new Blog();
 
-        return userService.getUser(1).toString();
+        return usService.getUser(1).toString();
     }
 
     @RequestMapping("/test")
-    @ResponseBody
+    //@ResponseBody
     public String test()
     {
+        /*
         User user = new User();
         user.setName("Ronnie");
         user.setPassword("this");
         user.setEmail("asdf");
         user.setPhone("456123");
-        userService.save(user);
+        user.setStatus(User.Status.PENDING);
+        usService.save(user);
 
-        return user.toString();
+        return usService.getUser(2).toString();*/
+
+        return "index";
     }
 
 }

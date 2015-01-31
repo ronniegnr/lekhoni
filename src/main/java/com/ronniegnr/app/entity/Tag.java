@@ -1,8 +1,11 @@
-package com.ronniegnr.app.model;
+package com.ronniegnr.app.entity;
+
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -16,7 +19,9 @@ public class Tag {
 
     private List<Post> posts;
 
-    public Tag() { }
+    public Tag() {
+        this.created = new Timestamp(new Date().getTime());
+    }
 
     @Id
     @NotNull
@@ -30,7 +35,8 @@ public class Tag {
     }
 
     @NotNull
-
+    @Length(max = 255)
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -39,6 +45,8 @@ public class Tag {
         this.name = name;
     }
 
+    @NotNull
+    @Column(name = "created")
     public Timestamp getCreated() {
         return created;
     }
@@ -47,6 +55,8 @@ public class Tag {
         this.created = created;
     }
 
+    @NotNull
+    @Column(name = "updated")
     public Timestamp getUpdated() {
         return updated;
     }
@@ -55,6 +65,7 @@ public class Tag {
         this.updated = updated;
     }
 
+    @ManyToMany(mappedBy = "tags")
     public List<Post> getPosts() {
         return posts;
     }
