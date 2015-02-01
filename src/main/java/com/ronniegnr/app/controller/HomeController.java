@@ -18,7 +18,14 @@ public class HomeController {
     private UserService usService;
 
     @RequestMapping("/")
-    public String index(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
+    public String home() {
+        return "home";
+    }
+
+
+
+    @RequestMapping("/test2")
+    public String index2(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
         return "pindex";
     }
@@ -47,7 +54,7 @@ public class HomeController {
 
         return usService.getUser(2).toString();*/
 
-        return "index";
+        return "home";
     }
 
 }
