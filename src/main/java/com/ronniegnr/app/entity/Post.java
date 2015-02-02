@@ -31,7 +31,7 @@ public class Post {
 
     public Post() {
         this.status = Status.ACTIVE;
-        this.created = new Timestamp(new Date().getTime());
+        this.created = this.updated = new Timestamp(new Date().getTime());
     }
 
     @Id

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Admin Post List</title>
+</head>
+<body>
+
+<section id="content" layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <table>
+                    <tr>
+                        <th>Srl</th>
+                        <th>Post Title</th>
+                        <th>Post Date</th>
+                        <th>Last Updated</th>
+                        <th>Stauts</th>
+                    </tr>
+                    <tr th:each="post, iterStat : ${posts}">
+                        <td th:text="${iterStat.count}"></td>
+                        <td th:text="${post.title}"></td>
+                        <td th:text="${post.created}"></td>
+                        <td th:text="${post.updated}"></td>
+                        <td th:text="${post.status}"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col-lg-4">
+                <aside class="right-sidebar">
+                    <div class="widget">
+                        <input class="form-control" type="text" placeholder="Search Post..." />
+                    </div>
+                    <div class="widget">
+                        <h5 class="widgetheading">Links</h5>
+                        <ul class="cat">
+                            <li><i class="icon-angle-right"></i><a href="#">Admin Panel</a></li>
+                            <li><i class="icon-angle-right"></i><a href="#">List</a></li>
+                            <li><i class="icon-angle-right"></i><a href="#">Create</a></li>
+                            <li><i class="icon-angle-right"></i><a href="#">Update</a></li>
+                            <li><i class="icon-angle-right"></i><a href="#">Delete</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

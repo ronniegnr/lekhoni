@@ -1,6 +1,5 @@
-package com.ronniegnr.app.controller;
+package com.ronniegnr.app.controller.client;
 
-import com.ronniegnr.app.entity.User;
 //import main.java.com.ronniegnr.app.service.BlogService;
 import com.ronniegnr.app.service.UserService;
 
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
@@ -17,10 +15,18 @@ public class HomeController {
     @Autowired
     private UserService usService;
 
-    @RequestMapping("/")
+    private static final String VIEW_PATH = "client/";
+
+    @RequestMapping(value = "/")
     public String home() {
-        return "home";
+        return this.VIEW_PATH + "home";
     }
+
+    @RequestMapping(value = "/blog")
+    public String blog() {
+        return this.VIEW_PATH + "blog";
+    }
+
 
 
 

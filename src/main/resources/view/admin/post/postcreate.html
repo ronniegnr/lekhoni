@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Admin Post Create</title>
+</head>
+<body>
+
+    <section id="content" layout:fragment="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <form action="#" th:action="@{/admin/post/create}" th:object="${post}" method="post">
+                            <div class="col-lg-12">
+                                <h3>Post Create</h3>
+                            </div>
+                            <div class="col-lg-12">
+                                <input type="text" name="title" th:field="*{title}" class="form-control" placeholder="* Post Title"  />
+                                <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="alert alert-danger margintop10"></div>
+                            </div>
+                            <div class="col-lg-12 margintop20">
+                                <textarea rows="12" name="content" th:field="*{content}" class="form-control" placeholder="* Post Content"  ></textarea>
+                                <div th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="alert alert-danger margintop10"></div>
+                            </div>
+                            <div class="col-lg-12 margintop20">
+                                <input class="btn btn-theme pull-left" type="submit" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <aside class="right-sidebar">
+                        <div class="widget">
+                            <input class="form-control" type="text" placeholder="Search Post..." />
+                        </div>
+                        <div class="widget">
+                            <h5 class="widgetheading">Links</h5>
+                            <ul class="cat">
+                                <li><i class="icon-angle-right"></i><a href="#">Admin Panel</a></li>
+                                <li><i class="icon-angle-right"></i><a href="#">List</a></li>
+                                <li><i class="icon-angle-right"></i><a href="#">Create</a></li>
+                                <li><i class="icon-angle-right"></i><a href="#">Update</a></li>
+                                <li><i class="icon-angle-right"></i><a href="#">Delete</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
