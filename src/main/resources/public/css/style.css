@@ -1736,42 +1736,7 @@ article img.pull-right, article .align-right{
 20. Spacer, margin
 ============================= */
 
-.clear-marginbot{
-	margin-bottom:0;
-}
 
-.marginbot10{
-	margin-bottom:10px;
-}
-.marginbot20{
-	margin-bottom:20px;
-}
-.marginbot30{
-	margin-bottom:30px;
-}
-.marginbot40{
-	margin-bottom:40px;
-}
-
-.clear-margintop{
-	margin-top:0;
-}
-
-.margintop10{
-	margin-top:10px;
-}
-
-.margintop20{
-	margin-top:20px;
-}
-
-.margintop30{
-	margin-top:30px;
-}
-
-.margintop40{
-	margin-top:40px;
-}
 
 
 /* =============================

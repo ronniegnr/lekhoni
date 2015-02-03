@@ -2,6 +2,8 @@ package com.ronniegnr.app.entity;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
@@ -90,6 +92,7 @@ public class Post {
     }
 
     @NotNull
+    @DateTimeFormat(pattern = "dd-MMM-yyyy")
     @Column(name = "created")
     public Timestamp getCreated() {
         return created;
@@ -100,6 +103,7 @@ public class Post {
     }
 
     @NotNull
+    @DateTimeFormat(pattern = "dd-MMM-yyyy")
     @Column(name = "updated")
     public Timestamp getUpdated() {
         return updated;
