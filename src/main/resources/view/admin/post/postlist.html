@@ -36,7 +36,7 @@
             <script type="text/javascript">
                 $(document).ready(function(){
                     $('.cursor-pointer').click(function(){
-                        window.location = 'http://localhost:8080/admin/post/update/' + $(this).attr('id');
+                        window.location = 'http://localhost:8080/admin/post/edit/' + $(this).attr('id');
                     });
                 });
             </script>
@@ -51,7 +51,7 @@
                         <ul class="cat">
                             <li><i class="icon-angle-right"></i><a th:href="@{/admin/post/list}">Admin Panel</a></li>
                             <li><i class="icon-angle-right"></i><a th:href="@{/admin/post/list}">List</a></li>
-                            <li><i class="icon-angle-right"></i><a th:href="@{/admin/post/create}">Create</a></li>
+                            <li><i class="icon-angle-right"></i><a th:href="@{/admin/post/entry}">Entry</a></li>
                         </ul>
                     </div>
                 </aside>

@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 
 import javax.validation.Valid;
@@ -33,16 +31,22 @@ public class AdminPostController {
         return this.VIEW_PATH + "postlist";
     }
 
-    @RequestMapping(value = "create", method = RequestMethod.GET)
-    public String createShowForm(Post post) {
-        return this.VIEW_PATH + "postcreate";
+    @RequestMapping(value = "entry", method = RequestMethod.GET)
+    public String showEntryForm(Post post) {
+        return this.VIEW_PATH + "postentry";
     }
 
-    @RequestMapping(value = "create", method = RequestMethod.POST)
-    public String createSaveForm(@Valid Post post, BindingResult bindingResult) {
+    @RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
+    public String showEditForm(@PathVariable(value = "id") int id, Model model) {
+        model.addAttribute("post", postService.getPost(id));
+        return this.VIEW_PATH + "postedit";
+    }
+
+    @RequestMapping(value = "save/{id}", method = RequestMethod.POST)
+    public String saveForm(@Valid Post post, BindingResult bindingResult) {
         post.setUser(userService.getUser(2));
         if(bindingResult.hasErrors()) {
-            return this.VIEW_PATH + "postcreate";
+            return this.VIEW_PATH + (post.getId() == 0 ? "postentry" : "postedit");
         }
         else {
             postService.save(post);
@@ -50,9 +54,12 @@ public class AdminPostController {
         }
     }
 
-    @ModelAttribute
-    @RequestMapping(value = "update", method = RequestMethod.GET)
-    public String updateShowForm(Post post) {
-        return this.VIEW_PATH = "postupdate";
+    @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
+    public String delete(@PathVariable(value = "id") int id) {
+        postService.delete(id);
+        return "redirect:/admin/post/list";
     }
+
+
+
 }
