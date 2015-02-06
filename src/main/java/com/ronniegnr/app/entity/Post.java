@@ -22,7 +22,7 @@ public class Post {
     private int id;
     private int userId;
     private String title;
-    private String content;
+    private String value;
     private Status status;
     private Timestamp created;
     private Timestamp updated;
@@ -30,6 +30,9 @@ public class Post {
     private User user;
     private List<Tag> tags;
     private List<Comment> comments;
+
+    private int valueShort;
+    private int commentCount;
 
     public Post() {
         this.status = Status.ACTIVE;
@@ -71,13 +74,13 @@ public class Post {
 
     @NotBlank
     @Length(max = 65535)
-    @Column(name = "content")
-    public String getContent() {
-        return content;
+    @Column(name = "value")
+    public String getValue() {
+        return value;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setValue(String value) {
+        this.value = value;
     }
 
     @NotNull
@@ -142,13 +145,24 @@ public class Post {
         this.comments = comments;
     }
 
+    @Transient
+    public String getValueShort() {
+        int valueLength = getValue().length();
+        return getValue().substring(0, valueLength > 500 ? 500 : valueLength) + "...";
+    }
+
+    @Transient
+    public int getCommentCount() {
+        return getComments().size();
+    }
+
     @Override
     public String toString() {
         return "Blog{" +
             "id=" + id +
             ", userId=" + userId +
             ", title='" + title + '\'' +
-            ", content='" + content + '\'' +
+            ", content='" + value + '\'' +
             ", status=" + status +
             ", created=" + created +
             ", updated=" + updated +

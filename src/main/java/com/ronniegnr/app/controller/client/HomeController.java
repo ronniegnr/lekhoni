@@ -22,7 +22,7 @@ public class HomeController {
         return this.VIEW_PATH + "home";
     }
 
-    @RequestMapping(value = "/blog")
+    @RequestMapping(value = "/blog2")
     public String blog() {
         return this.VIEW_PATH + "blog";
     }

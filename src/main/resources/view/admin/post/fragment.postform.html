@@ -7,8 +7,8 @@
         <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="alert alert-danger margintop10"></div>
     </div>
     <div class="col-lg-12 margintop20">
-        <textarea rows="12" name="content" th:field="*{content}" class="form-control" placeholder="* Post Content"  ></textarea>
-        <div th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="alert alert-danger margintop10"></div>
+        <textarea rows="12" name="content" th:field="*{value}" class="form-control" placeholder="* Post Content"  ></textarea>
+        <div th:if="${#fields.hasErrors('value')}" th:errors="*{value}" class="alert alert-danger margintop10"></div>
     </div>
     <div class="col-lg-12 margintop20">
         <input class="btn btn-theme pull-left" type="submit" />
