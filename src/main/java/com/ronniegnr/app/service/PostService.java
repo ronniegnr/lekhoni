@@ -20,7 +20,7 @@ public class PostService {
     @Autowired
     public PostRepository postRepository;
 
-    private static final int PER_PAGE_DATA = 1;
+    private static final int PER_PAGE_DATA = 5;
 
     public Post getPost(int id) {
         return postRepository.findOne(id);
@@ -30,7 +30,7 @@ public class PostService {
         return (List<Post>)postRepository.findAll();
     }
 
-    public Page<Post> getAllPost(int pageNo) {
+    public Page<Post> getPagedPost(int pageNo) {
         Pageable pageable = new PageRequest(pageNo-1, PER_PAGE_DATA, new Sort(Sort.Direction.DESC, "id"));
         return postRepository.findAll(pageable);
     }

@@ -58,14 +58,14 @@ CREATE TABLE `post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `title` varchar(1023) COLLATE utf8_unicode_ci NOT NULL,
-  `content` text COLLATE utf8_unicode_ci NOT NULL,
+  `value` text COLLATE utf8_unicode_ci NOT NULL,
   `status` varchar(63) COLLATE utf8_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_kpfnivid38f5bwx3yl1lxeeae` (`user_id`),
   CONSTRAINT `FK_kpfnivid38f5bwx3yl1lxeeae` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,6 +74,7 @@ CREATE TABLE `post` (
 
 LOCK TABLES `post` WRITE;
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
+INSERT INTO `post` VALUES (1,2,'aasdf','asdf','ACTIVE','2015-02-02 17:22:47','2015-02-02 17:22:47'),(2,2,'second post','second post','ACTIVE','2015-02-09 18:14:01','2015-02-09 18:14:01'),(3,2,'third post','third post','ACTIVE','2015-02-09 19:01:21','2015-02-09 19:01:21'),(4,2,'fourth post','fourth post','ACTIVE','2015-02-09 19:01:31','2015-02-09 19:01:31'),(5,2,'fifth post','fifth post','ACTIVE','2015-02-09 19:01:41','2015-02-09 19:01:41'),(6,2,'sixth post','sixth post','ACTIVE','2015-02-09 19:01:51','2015-02-09 19:01:51');
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,4 +172,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-02-01 17:40:43
+-- Dump completed on 2015-02-09 19:09:17
