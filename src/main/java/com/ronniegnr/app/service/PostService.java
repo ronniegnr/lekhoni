@@ -20,7 +20,7 @@ public class PostService {
     @Autowired
     public PostRepository postRepository;
 
-    private static final int PER_PAGE_DATA = 5;
+    private static final int PER_PAGE_DATA = 10;
 
     public Post getPost(int id) {
         return postRepository.findOne(id);

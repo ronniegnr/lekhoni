@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping(value = "/")
 public class BlogController {
 
     @Autowired
@@ -17,12 +18,22 @@ public class BlogController {
 
     private static final String VIEW_PATH = "client/blog/";
 
-    @RequestMapping("/blog/{pageNo}")
-    public String blog(@PathVariable(value = "pageNo") int pageNo, Model model) {
-        PageWrapper<Post> page = new PageWrapper<Post>(postService.getPagedPost(pageNo), "/blog/");
-        model.addAttribute("posts", postService.getPagedPost(pageNo) );
-        model.addAttribute("page", page);
+    @RequestMapping("blog")
+    public String blog() {
+        return "redirect:/blog/1";
+    }
+
+    @RequestMapping("blog/{pageNo}")
+    public String blog1(@PathVariable(value = "pageNo") int pageNo, Model model) {
+        PageWrapper<Post> pagedPosts = new PageWrapper<Post>(postService.getPagedPost(pageNo), "/blog/");
+        model.addAttribute("pagedPosts", pagedPosts);
         return this.VIEW_PATH + "blog";
+    }
+
+    @RequestMapping("blog/post/{postId}")
+    public String post(@PathVariable(value = "postId") int postId, Model model) {
+        model.addAttribute("post", postService.getPost(postId));
+        return this.VIEW_PATH + "post";
     }
 
 }

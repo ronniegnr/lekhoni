@@ -8,13 +8,12 @@
 <section id="content" layout:fragment="content">
     <div class="container">
         <div class="row">
+
             <div class="col-lg-8">
                 <div class="col-lg-12">
                     <h3>Post Edit</h3>
                 </div>
-                <form action="#" th:action="@{/admin/post/save/} + ${post.id}" th:object="${post}" method="post">
-                    <div th:replace="admin/post/fragment.postform :: postform"></div>
-                </form>
+                <div th:replace="fragment/admin/post/postform :: postform(${post})"></div> <!-- form.action: admin/post/save/{id}, form.method: post -->
             </div>
 
             <div class="col-lg-4">
@@ -32,6 +31,7 @@
                     </div>
                 </aside>
             </div>
+
         </div>
     </div>
 </section>

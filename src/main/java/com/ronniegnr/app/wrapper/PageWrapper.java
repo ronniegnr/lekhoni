@@ -48,6 +48,14 @@ public class PageWrapper<T> {
         }
     }
 
+    public Page<T> getPage() {
+        return page;
+    }
+
+    public void setPage(Page<T> page) {
+        this.page = page;
+    }
+
     public List<PageItem> getItems(){
         return items;
     }

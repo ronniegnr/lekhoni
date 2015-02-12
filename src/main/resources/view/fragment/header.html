@@ -1,27 +1,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
-<header th:fragment="header">
-    <div class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" th:href="@{/}">Khairul Anam <span>Ronnie</span></a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a th:href="@{/}">Home</a></li>
-                    <li><a th:href="@{/blog}">Blog</a></li>
-                    <li><a th:href="@{/info}">Info</a></li>
-                    <li><a th:href="@{/contact}">Contact</a></li>
-                    <li><a th:href="@{/admin/post/list}">Login</a></li>
-                </ul>
+    <header th:fragment="header">
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" th:href="@{/}">Khairul Anam <span>Ronnie</span></a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a th:href="@{/}">Home</a></li>
+                        <li><a th:href="@{/blog}">Blog</a></li>
+                        <li><a th:href="@{/info}">Info</a></li>
+                        <li><a th:href="@{/contact}">Contact</a></li>
+                        <div th:if="${#httpServletRequest.remoteUser == null}" th:remove="tag">
+                            <li><a th:href="@{/login}">Login</a></li>
+                        </div>
+                        <div th:if="${#httpServletRequest.remoteUser != null}" th:remove="tag">
+                            <li><a th:href="@{/logout}">Logout</a></li>
+                        </div>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
 </html>

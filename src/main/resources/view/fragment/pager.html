@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="pager(page)">
+    <div id="pagination">
+        <span class="all" th:text="'Page ' + ${page.number} + ' of ' + ${page.totalPages}">Page 1 of 5</span>
+        <span th:if="${page.firstPage}" class="current">First</span>
+        <a th:if="${not page.firstPage}" th:href="@{${page.url} + '/1'}" class="inactive">First</a>
+        <span th:if='${not page.hasPreviousPage}'>Prev</span>
+        <a th:if='${page.hasPreviousPage}' th:href="@{${page.url} +${page.number-1}}">Prev</a>
+        <div th:each='item : ${page.items}' th:remove="tag">
+            <span th:if='${item.current}' th:text='${item.number}' class="current">1</span>
+            <a th:if='${not item.current}' th:href="@{${page.url}} + ${item.number}" th:text='${item.number}' class="inactive">2</a>
+        </div>
+        <span th:if="${not page.hasNextPage}">Next</span>
+        <a th:if='${page.hasNextPage}' th:href="@{${page.url} + ${page.number+1}}" class="inactive" title='Go to next page'>Next</a>
+        <span th:if='${page.lastPage}' class="current">Last</span>
+        <a th:if='${not page.lastPage}' th:href='@{${page.url} + ${page.totalPages}}' class="inactive">Last</a>
+    </div>
+</div>
+
+</html>
