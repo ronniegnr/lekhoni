@@ -18,19 +18,19 @@ public class BlogController {
 
     private static final String VIEW_PATH = "client/blog/";
 
-    @RequestMapping("blog")
+    @RequestMapping(value = "blog")
     public String blog() {
         return "redirect:/blog/1";
     }
 
-    @RequestMapping("blog/{pageNo}")
+    @RequestMapping(value = "blog/{pageNo}")
     public String blog1(@PathVariable(value = "pageNo") int pageNo, Model model) {
         PageWrapper<Post> pagedPosts = new PageWrapper<Post>(postService.getPagedPost(pageNo), "/blog/");
         model.addAttribute("pagedPosts", pagedPosts);
         return this.VIEW_PATH + "blog";
     }
 
-    @RequestMapping("blog/post/{postId}")
+    @RequestMapping(value = "blog/post/{postId}")
     public String post(@PathVariable(value = "postId") int postId, Model model) {
         model.addAttribute("post", postService.getPost(postId));
         return this.VIEW_PATH + "post";

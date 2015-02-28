@@ -4,5 +4,7 @@ import com.ronniegnr.app.entity.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
-//    /User findById(int id);
+
+    User findById(int id);
+    User findByName(String name);
 }
