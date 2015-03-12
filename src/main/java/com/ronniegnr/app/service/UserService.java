@@ -1,12 +1,15 @@
 package com.ronniegnr.app.service;
 
 import com.ronniegnr.app.entity.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
+
+import java.util.List;
 
 public interface UserService {
 
-    User getUser(int id);
+    User getUserById(int id);
+    User getUserByEmail(String email);
+    List<User> getAllUser();
 
-    void save(User user);
+    void saveUser(User user);
 
 }

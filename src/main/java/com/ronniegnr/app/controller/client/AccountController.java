@@ -14,4 +14,9 @@ public class AccountController {
         return this.VIEW_PATH + "signup";
     }
 
+    @RequestMapping(value = "login")
+    public String login() {
+        return this.VIEW_PATH + "login";
+    }
+
 }

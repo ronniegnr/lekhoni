@@ -14,13 +14,41 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
-        auth.inMemoryAuthentication().withUser("admin").password("password").roles("ADMIN");
+        auth.inMemoryAuthentication().withUser("gnr_ronnie@yahoo.com").password("123456").roles("ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+
+        /*http.authorizeRequests()
             .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
             .and().formLogin();
+        */
+
+        /*
+        http
+            .authorizeRequests()
+                .antMatchers("/resources/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+            .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+            .logout()
+                .permitAll();
+        */
+
+        http
+            .authorizeRequests()
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+                .and()
+            .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+            .logout()
+                .permitAll();
+
     }
 }

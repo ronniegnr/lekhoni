@@ -308,7 +308,7 @@ ul.nav li.dropdown a {
 
 #featured{
 	width: 100%;
-	background:#fcfcfc;
+	background:#fff;
 	position:relative;
 	margin:0;
 	padding:0;
@@ -1569,6 +1569,23 @@ ul.social-network li {
 .copyright {
 	text-align:left;
 	font-size:12px;
+}
+
+/* custom by me */
+.area_left {
+    padding: 0 130px 0 0;
+    border-right: 1px solid #eae9e9;
+    min-height: 370px;
+}
+.area_right {
+    padding: 0 15px 0 100px;
+}
+.area_left .form-control, .area_right .form-control {
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #ececec;
+    box-shadow: none;
+    border-radius: 3px;
 }
 
 

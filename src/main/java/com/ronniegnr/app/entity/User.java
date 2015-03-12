@@ -77,7 +77,7 @@ public class User {
 
     @NotBlank
     @Length(max = 255)
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     public String getEmail() {
         return email;
     }
