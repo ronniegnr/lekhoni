@@ -1,5 +1,6 @@
 package com.ronniegnr.app.entity;
 
+import com.ronniegnr.app.entity.form.UserAdminForm;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -202,4 +203,16 @@ public class User {
             ", posts=" + posts +
             '}';
     }
+
+    public UserAdminForm toUserAdminForm() {
+        UserAdminForm userAdminForm = new UserAdminForm();
+
+        userAdminForm.setId(id);
+        userAdminForm.setName(name);
+        userAdminForm.setEmail(email);
+        userAdminForm.setPhone(phone);
+
+        return userAdminForm;
+    }
+
 }

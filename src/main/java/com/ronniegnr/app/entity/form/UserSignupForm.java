@@ -3,12 +3,25 @@ package com.ronniegnr.app.entity.form;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class UserForm {
+import javax.validation.constraints.NotNull;
+
+public class UserSignupForm {
+
+    private int id;
     private String name;
     private String email;
     private String phone;
     private String password;
     private String repeatedPassword;
+
+    @NotNull
+    public int  getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @NotBlank
     public String getName() {
@@ -65,4 +78,5 @@ public class UserForm {
             ", repeatedPassword='" + repeatedPassword + '\'' +
             '}';
     }
+
 }
