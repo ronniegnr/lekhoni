@@ -11,26 +11,30 @@
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="area_left">
                     <h3>Sign up</h3>
-                    <form action="#" th:action="@{/signup}" method="post" class="form">
+                    <form action="#" th:action="@{/signup}" method="post"  th:object="${userSignupForm}" class="form">
                         <div class="form-group">
                             <label class="sr-only" for="name">User name</label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Full Name" />
+                            <input type="text" id="name" name="name" th:field="*{name}" class="form-control" placeholder="Full Name" />
+                            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger margintop10"></div>
                         </div>
                         <div class="form-group">
                             <label class="sr-only" for="email">Email Address</label>
                             <input type="email" id="email" name="email" class="form-control" placeholder="Email Address" />
+                            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger margintop10"></div>
                         </div>
                         <div class="form-group">
                             <label class="sr-only" for="phone">Phone Number</label>
                             <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone Number" />
+                            <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="alert alert-danger margintop10"></div>
                         </div>
                         <div class="form-group">
                             <label class="sr-only" for="password">Password</label>
                             <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
+                            <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger margintop10"></div>
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="repeatedpassword">Password</label>
-                            <input type="password" id="repeatedpassword" name="repeatedpassword" class="form-control" placeholder="Password" />
+                            <label class="sr-only" for="repeatedPassword">Password</label>
+                            <input type="password" id="repeatedPassword" name="repeatedPassword" class="form-control" placeholder="Password" />
                         </div>
                         <input type="submit" value="SIGN UP" class="btn" />
                     </form>

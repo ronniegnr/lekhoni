@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,8 +55,6 @@ public class AdminUserController {
 
     @RequestMapping(value = "save/{id}", method = RequestMethod.POST)
     public String save(@Valid UserAdminForm userAdminForm, BindingResult bindingResult) {
-        System.out.println(userAdminForm.toString());
-
         if(bindingResult.hasErrors()) {
             return this.VIEW_PATH + (userAdminForm.getId() == 0 ? "entry" : "edit");
         }
