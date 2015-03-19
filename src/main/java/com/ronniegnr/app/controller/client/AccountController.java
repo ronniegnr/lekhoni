@@ -7,6 +7,7 @@ import com.ronniegnr.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,6 +22,7 @@ public class AccountController {
 
     @Autowired
     private UserService userService;
+
     @Autowired
     private UserSignupValidator userSignupValidator;
 
@@ -29,18 +31,26 @@ public class AccountController {
     private static final String SIGNUP_PAGE = "/signup";
     private static final String LOGIN_PAGE = "/login";
 
+    /*
     @InitBinder(value = "userSignupForm")
     public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.addValidators(userSignupValidator);
     }
 
+    @ModelAttribute(value = "userSignupForm")
+    public UserSignupForm generateUserSignupForm() {
+        return new UserSignupForm();
+    }*/
+
     @RequestMapping(value = "signup", method = RequestMethod.GET)
-    public String signup() {
+    public String signup(UserSignupForm userSignupForm) {
         return this.VIEW_PATH + "login";
     }
 
     @RequestMapping(value = "signup", method = RequestMethod.POST)
-    public String signupPost(@Valid @ModelAttribute("userSignupForm") UserSignupForm userSignupForm, BindingResult bindingResult) {
+    public String signupPost(@Validated UserSignupForm userSignupForm, BindingResult bindingResult) {
+        System.out.println(bindingResult);
+
         if(bindingResult.hasErrors()) {
             return "redirect:/signup";
         }
