@@ -23,14 +23,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .and()
             .formLogin()
+                .permitAll()
                 .loginPage("/login")
                 .failureUrl("/login?error")
-                .permitAll()
                 .usernameParameter("email")
                 .and()
             .logout()
                 .permitAll()
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/")
+                .deleteCookies("remember-me")
+                .and()
+            .rememberMe();
     }
 
     @Override
