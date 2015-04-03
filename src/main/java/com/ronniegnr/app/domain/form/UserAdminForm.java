@@ -1,18 +1,15 @@
-package com.ronniegnr.app.entity.form;
+package com.ronniegnr.app.domain.form;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.validation.constraints.NotNull;
 
-public class UserSignupForm {
+
+public class UserAdminForm {
 
     private int id;
     private String name;
     private String email;
     private String phone;
-    private String password;
-    private String repeatedPassword;
 
     @NotNull
     public int  getId() {
@@ -50,33 +47,13 @@ public class UserSignupForm {
         this.phone = phone;
     }
 
-    @NotEmpty
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @NotEmpty
-    public String getRepeatedPassword() {
-        return repeatedPassword;
-    }
-
-    public void setRepeatedPassword(String repeatedPassword) {
-        this.repeatedPassword = repeatedPassword;
-    }
-
     @Override
     public String toString() {
-        return "UserForm{" +
-            "name='" + name + '\'' +
+        return "UserAdminForm{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
             ", email='" + email + '\'' +
             ", phone='" + phone + '\'' +
-            ", password='" + password + '\'' +
-            ", repeatedPassword='" + repeatedPassword + '\'' +
             '}';
     }
-
 }

@@ -1,6 +1,6 @@
 package com.ronniegnr.app.service;
 
-import com.ronniegnr.app.entity.Comment;
+import com.ronniegnr.app.domain.entity.Comment;
 import com.ronniegnr.app.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,8 @@
 package com.ronniegnr.app.service;
 
-import com.ronniegnr.app.entity.User;
-import com.ronniegnr.app.entity.form.UserSignupForm;
-import com.ronniegnr.app.entity.form.UserAdminForm;
+import com.ronniegnr.app.domain.entity.User;
+import com.ronniegnr.app.domain.form.UserSignupForm;
+import com.ronniegnr.app.domain.form.UserAdminForm;
 
 import java.util.List;
 

@@ -1,22 +1,18 @@
 package com.ronniegnr.app.controller.admin;
 
-import com.ronniegnr.app.entity.Post;
-import com.ronniegnr.app.entity.User;
-import com.ronniegnr.app.entity.form.UserAdminForm;
-import com.ronniegnr.app.entity.form.UserSignupForm;
+import com.ronniegnr.app.domain.form.UserAdminForm;
 import com.ronniegnr.app.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+
 
 @Controller
 @RequestMapping(value = "/admin/user/")
@@ -44,12 +40,8 @@ public class AdminUserController {
 
     @RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
     public String edit(@PathVariable(value = "id") int id, Model model) {
-
         UserAdminForm userAdminForm = userService.getUserById(id).toUserAdminForm();
-        System.out.println(userAdminForm.toString());
-
         model.addAttribute("userAdminForm", userService.getUserById(id).toUserAdminForm());
-
         return this.VIEW_PATH + "edit";
     }
 

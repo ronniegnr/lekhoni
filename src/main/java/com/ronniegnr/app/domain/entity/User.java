@@ -1,6 +1,7 @@
-package com.ronniegnr.app.entity;
+package com.ronniegnr.app.domain.entity;
 
-import com.ronniegnr.app.entity.form.UserAdminForm;
+import com.ronniegnr.app.domain.form.UserAdminForm;
+
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -16,7 +17,7 @@ import java.util.List;
 public class User {
 
     public enum Sex { MALE, FEMALE }
-    public enum Type { USER, ADMIN }
+    public enum Role { USER, ADMIN }
     public enum Status { PENDING, ACTIVE, INACTIVE }
 
     private int id;
@@ -27,7 +28,7 @@ public class User {
     private Date dateOfBirth;
     private String avatar;
     private Sex sex;
-    private Type type;
+    private Role role;
     private Status status;
     private Timestamp created;
     private Timestamp updated;
@@ -37,7 +38,7 @@ public class User {
 
     public User()
     {
-        this.type = Type.USER;
+        this.role = Role.USER;
         this.status = Status.PENDING;
         this.created = new Timestamp(new Date().getTime());
     }
@@ -127,13 +128,13 @@ public class User {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    public Type getType() {
-        return type;
+    @Column(name = "role")
+    public Role getRole() {
+        return role;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @NotNull
@@ -196,7 +197,7 @@ public class User {
             ", dateOfBirth=" + dateOfBirth +
             ", sex='" + sex + '\'' +
             ", avatar='" + avatar + '\'' +
-            ", type=" + type +
+            ", role=" + role +
             ", status=" + status +
             ", created=" + created +
             ", updated=" + updated +

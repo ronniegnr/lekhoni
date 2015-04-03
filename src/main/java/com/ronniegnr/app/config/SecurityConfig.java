@@ -6,49 +6,38 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 @Configuration
 @EnableWebMvcSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
-        auth.inMemoryAuthentication().withUser("gnr_ronnie@yahoo.com").password("123456").roles("ADMIN");
-    }
+    private UserDetailsService userDetailsService;
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-
-        /*http.authorizeRequests()
-            .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-            .and().formLogin();
-        */
-
-        /*
-        http
-            .authorizeRequests()
-                .antMatchers("/resources/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-            .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-            .logout()
-                .permitAll();
-        */
-
-        http
-            .authorizeRequests()
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.authorizeRequests()
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .and()
             .formLogin()
                 .loginPage("/login")
+                .failureUrl("/login?error")
                 .permitAll()
+                .usernameParameter("email")
                 .and()
             .logout()
-                .permitAll();
-
+                .permitAll()
+                .logoutSuccessUrl("/");
     }
+
+    @Override
+    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+        authenticationManagerBuilder
+            .userDetailsService(userDetailsService)
+            .passwordEncoder(new BCryptPasswordEncoder());
+    }
+
 }

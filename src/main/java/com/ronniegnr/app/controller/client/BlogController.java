@@ -1,6 +1,6 @@
 package com.ronniegnr.app.controller.client;
 
-import com.ronniegnr.app.entity.Post;
+import com.ronniegnr.app.domain.entity.Post;
 import com.ronniegnr.app.service.PostService;
 import com.ronniegnr.app.wrapper.PageWrapper;
 import org.springframework.beans.factory.annotation.Autowired;

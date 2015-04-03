@@ -1,4 +1,4 @@
-package com.ronniegnr.app.entity;
+package com.ronniegnr.app.domain.entity;
 
 import org.hibernate.validator.constraints.Length;
 

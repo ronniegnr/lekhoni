@@ -1,6 +1,6 @@
 package com.ronniegnr.app.service;
 
-import com.ronniegnr.app.entity.Post;
+import com.ronniegnr.app.domain.entity.Post;
 import com.ronniegnr.app.repository.PostRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
