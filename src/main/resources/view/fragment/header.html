@@ -12,16 +12,16 @@
                     <a class="navbar-brand" th:href="@{/}">Khairul Anam <span>Ronnie</span></a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a th:href="@{/}">Home</a></li>
-                        <li><a th:href="@{/blog}">Blog</a></li>
-                        <li><a th:href="@{/info}">Info</a></li>
-                        <li><a th:href="@{/contact}">Contact</a></li>
+                    <ul id="nav" class="nav navbar-nav">
+                        <li class="active"><a th:href="@{/blog}">blog</a></li>
+                        <!--<li><a th:href="@{/info}">Info</a></li>-->
+                        <li><a th:href="@{/contact}">contact</a></li>
                         <div th:if="${#httpServletRequest.remoteUser == null}" th:remove="tag">
-                            <li><a th:href="@{/login}">Login</a></li>
+                            <li><a th:href="@{/login}">login</a></li>
                         </div>
                         <div th:if="${#httpServletRequest.remoteUser != null}" th:remove="tag">
-                            <li><a th:href="@{/logout}">Logout</a></li>
+                            <li><a th:href="@{/admin/post/list}">admin</a></li>
+                            <li><a th:href="@{/logout}">logout</a></li>
                         </div>
                     </ul>
                 </div>
