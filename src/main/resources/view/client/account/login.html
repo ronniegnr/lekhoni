@@ -56,6 +56,9 @@
                         <div th:if="${message != null}" th:remove="tag">
                             <div class="alert alert-danger" th:text="${message}"></div>
                         </div>
+                        <div class="form-group remember-me">
+                            <input type="checkbox" name="remember-me" /> Remember me
+                        </div>
                         <p>
                             <a href="#">Forgot Password</a>
                         </p>

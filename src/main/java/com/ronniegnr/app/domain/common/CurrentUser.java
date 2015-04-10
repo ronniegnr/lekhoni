@@ -1,7 +1,6 @@
 package com.ronniegnr.app.domain.common;
 
 import com.ronniegnr.app.domain.entity.User;
-
 import org.springframework.security.core.authority.AuthorityUtils;
 
 

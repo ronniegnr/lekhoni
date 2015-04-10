@@ -21,12 +21,25 @@
                         </div>
                         <div th:if="${#httpServletRequest.remoteUser != null}" th:remove="tag">
                             <li><a th:href="@{/admin/post/list}">admin</a></li>
-                            <li><a th:href="@{/logout}">logout</a></li>
+                            <li><a id="ar-logout" th:href="@{/logout}">logout</a></li>
                         </div>
                     </ul>
                 </div>
             </div>
         </div>
+
+        <form action="#" th:action="@{/logout}" method="post">
+            <input type="submit" id="it-logout" value="" />
+        </form>
+        <script>
+            $(document).ready(function(){
+                $('#ar-logout').click(function(){
+                    $('#it-logout').click();
+                    return false;
+                })
+            })
+        </script>
+
     </header>
 
 </html>
