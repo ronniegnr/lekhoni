@@ -212,6 +212,7 @@ public class User {
         userAdminForm.setName(name);
         userAdminForm.setEmail(email);
         userAdminForm.setPhone(phone);
+        userAdminForm.setStatus(status);
 
         return userAdminForm;
     }

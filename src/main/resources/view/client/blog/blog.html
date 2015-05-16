@@ -15,13 +15,13 @@
                             <div class="post-heading">
                                 <h3 th:text="${post.title}"></h3>
                             </div>
-                            <p th:text="${post.valueShort}"></p>
+                            <p th:utext="${post.valueShort}"></p>
                             <div class="bottom-article">
                                 <ul class="meta-post">
-                                    <li><i class="icon-calendar"></i><a href="#" th:text="${{post.created}}"></a></li>
-                                    <li><i class="icon-user"></i><a href="#" th:text="${post.user.name}"></a></li>
-                                    <li><i class="icon-folder-open"></i><a href="#">Blog</a></li>
-                                    <li><i class="icon-comments"></i><a href="#" th:text="${post.commentCount} +' Comments'"></a></li>
+                                    <li><i class="icon-calendar"></i><a th:href="@{/blog/post/} + ${post.id}" th:text="${{post.created}}"></a></li>
+                                    <li><i class="icon-user"></i><a th:href="@{/blog/post/} + ${post.id}" th:text="${post.user.name}"></a></li>
+                                    <li><i class="icon-folder-open"></i><a th:href="@{/blog/post/} + ${post.id}">Blog</a></li>
+                                    <li><i class="icon-comments"></i><a th:href="@{/blog/post/} + ${post.id}" th:text="${post.commentCount} +' Comments'"></a></li>
                                 </ul>
                                 <a href="#" th:href="@{/blog/post/} + ${post.id}" class="pull-right">Continue reading <i class="icon-angle-right"></i></a>
                             </div>

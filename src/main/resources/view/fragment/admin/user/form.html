@@ -20,6 +20,18 @@
                     <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="alert alert-danger margintop10"></div>
                 </div>
                 <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status" name="status" th:field="*{status}" >
+                        <option value="PENDING">PENDING</option>
+                        <option value="ACTIVE">ACTIVE</option>
+                        <option value="INACTIVE">INACTIVE</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Password (left blank to keep it unchanged)</label>
+                    <input type="text" name="password" class="form-control" placeholder="Password"  />
+                </div>
+                <div class="form-group">
                     <input class="btn btn-theme pull-left" type="submit" />
                 </div>
             </div>

@@ -54,6 +54,10 @@ class UserServiceImpl implements UserService {
         user.setName(userAdminForm.getName());
         user.setEmail(userAdminForm.getEmail());
         user.setPhone(userAdminForm.getPhone());
+        user.setStatus(userAdminForm.getStatus());
+        if(!userAdminForm.getPassword().isEmpty()) {
+            user.setPassword(new BCryptPasswordEncoder().encode(userAdminForm.getPassword()));
+        }
         saveUser(user);
     }
 

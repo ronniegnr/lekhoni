@@ -1,6 +1,8 @@
 package com.ronniegnr.app.domain.form;
 
+import com.ronniegnr.app.domain.entity.User;
 import org.hibernate.validator.constraints.NotBlank;
+
 import javax.validation.constraints.NotNull;
 
 
@@ -10,6 +12,8 @@ public class UserAdminForm {
     private String name;
     private String email;
     private String phone;
+    private User.Status status;
+    private String password;
 
     @NotNull
     public int  getId() {
@@ -47,6 +51,23 @@ public class UserAdminForm {
         this.phone = phone;
     }
 
+    @NotNull
+    public User.Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(User.Status status) {
+        this.status = status;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "UserAdminForm{" +
@@ -54,6 +75,8 @@ public class UserAdminForm {
             ", name='" + name + '\'' +
             ", email='" + email + '\'' +
             ", phone='" + phone + '\'' +
+            ", status=" + status + '\'' +
+            ", password='" + password + '\'' +
             '}';
     }
 }

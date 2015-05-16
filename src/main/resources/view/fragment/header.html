@@ -13,12 +13,20 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul id="nav" class="nav navbar-nav">
-                        <li class="active"><a th:href="@{/blog}">blog</a></li>
-                        <!--<li><a th:href="@{/info}">Info</a></li>-->
-                        <li><a th:href="@{/contact}">contact</a></li>
+                        <li class="active">
+                            <a th:href="@{/blog}">blog</a>
+                        </li>
+                        <!--<li>
+                            <a th:href="@{/info}">Info</a>
+                        </li>-->
+                        <!--
+                        <li>
+                            <a th:href="@{/contact}">contact</a>
+                        </li>
                         <div th:if="${#httpServletRequest.remoteUser == null}" th:remove="tag">
                             <li><a th:href="@{/login}">login</a></li>
                         </div>
+                        -->
                         <div th:if="${#httpServletRequest.remoteUser != null}" th:remove="tag">
                             <li><a th:href="@{/admin/post/list}">admin</a></li>
                             <li><a id="ar-logout" th:href="@{/logout}">logout</a></li>
@@ -29,7 +37,7 @@
         </div>
 
         <form action="#" th:action="@{/logout}" method="post">
-            <input type="submit" id="it-logout" value="" />
+            <input type="submit" id="it-logout" class="display-none" />
         </form>
         <script>
             $(document).ready(function(){

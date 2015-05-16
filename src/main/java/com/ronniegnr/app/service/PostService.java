@@ -32,7 +32,8 @@ public class PostService {
 
     public Page<Post> getPagedPost(int pageNo) {
         Pageable pageable = new PageRequest(pageNo-1, PER_PAGE_DATA, new Sort(Sort.Direction.DESC, "id"));
-        return postRepository.findAll(pageable);
+        //return postRepository.findAll(pageable);
+        return postRepository.findByStatus(Post.Status.ACTIVE, pageable);
     }
 
     public Post save(Post post) {
