@@ -13,14 +13,15 @@ import java.util.List;
 public class Tag {
 
     private int id;
-    private String name;
+    private String name; // this will be show in the page
+    private String value; // this will be used as URL parameter
     private Timestamp created;
     private Timestamp updated;
 
     private List<Post> posts;
 
     public Tag() {
-        this.created = new Timestamp(new Date().getTime());
+        this.created = this.updated = new Timestamp(new Date().getTime());
     }
 
     @Id
@@ -43,6 +44,17 @@ public class Tag {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @NotNull
+    @Length(max = 255)
+    @Column(name = "value")
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 
     @NotNull
@@ -72,5 +84,17 @@ public class Tag {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    @Override
+    public String toString() {
+        return "Tag{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", value='" + value + '\'' +
+            ", created=" + created +
+            ", updated=" + updated +
+            ", posts=" + posts +
+            '}';
     }
 }

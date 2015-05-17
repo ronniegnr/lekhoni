@@ -11,13 +11,13 @@
 
             <div class="col-lg-8">
                 <div class="col-lg-12">
-                    <h3>Post Edit</h3>
+                    <h3>Tag Edit</h3>
                 </div>
-                <div th:replace="fragment/admin/post/form :: form(${postAdminForm})"></div> <!-- form.action: admin/post/save/{id}, form.method: post -->
+                <div th:replace="fragment/admin/tag/form :: form(${tag})"></div> <!-- form.action: admin/tag/save/{id}, form.method: post -->
             </div>
 
             <div class="col-lg-4">
-                <div th:replace="fragment/admin/right :: right('post')"></div>
+                <div th:replace="fragment/admin/right :: right('tag')"></div>
             </div>
 
         </div>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class TagService {
@@ -18,9 +19,21 @@ public class TagService {
         return tagRepository.findOne(id);
     }
 
-    public Tag Save(Tag tag) {
+    public List<Tag> getAllTag() {
+        return (List<Tag>)tagRepository.findAll();
+    }
+
+    public Tag getTag(String value) {
+        return tagRepository.findByValue(value);
+    }
+
+    public Tag save(Tag tag) {
         tag.setUpdated(new Timestamp(new Date().getTime()));
         return tagRepository.save(tag);
+    }
+
+    public void delete(int id) {
+        tagRepository.delete(id);
     }
 
 }

@@ -18,10 +18,13 @@
                             <p th:utext="${post.valueShort}"></p>
                             <div class="bottom-article">
                                 <ul class="meta-post">
-                                    <li><i class="icon-calendar"></i><a th:href="@{/blog/post/} + ${post.id}" th:text="${{post.created}}"></a></li>
-                                    <li><i class="icon-user"></i><a th:href="@{/blog/post/} + ${post.id}" th:text="${post.user.name}"></a></li>
-                                    <li><i class="icon-folder-open"></i><a th:href="@{/blog/post/} + ${post.id}">Blog</a></li>
-                                    <li><i class="icon-comments"></i><a th:href="@{/blog/post/} + ${post.id}" th:text="${post.commentCount} +' Comments'"></a></li>
+                                    <li><a th:href="@{/blog/post/} + ${post.id}" th:text="${{post.created}}"></a></li>
+                                    <!--<li><a th:href="@{/blog/post/} + ${post.id}" th:text="${post.user.name}"></a></li>
+                                    <li><a th:href="@{/blog/post/} + ${post.id}">Blog</a></li>-->
+                                    <li><a th:href="@{/blog/post/} + ${post.id}" th:text="${post.commentCount} +' Comments'"></a></li>
+                                    <div th:each="tag : ${post.tags}" th:remove="tag">
+                                        <li><a th:href="@{/blog/__${tag.value}__/1}" th:text="${tag.name}"></a></li>
+                                    </div>
                                 </ul>
                                 <a href="#" th:href="@{/blog/post/} + ${post.id}" class="pull-right">Continue reading <i class="icon-angle-right"></i></a>
                             </div>

@@ -16,7 +16,7 @@ public class CurrentUserDetailsService implements UserDetailsService {
     private UserService userService;
 
     public CurrentUser loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userService.getUserByEmail(email);
+        User user = userService.getUser(email);
         if(user == null) {
             throw new UsernameNotFoundException(String.format("User with email=%s was not found", email));
         }

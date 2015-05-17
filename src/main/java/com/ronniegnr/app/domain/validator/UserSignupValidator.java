@@ -34,7 +34,7 @@ public class UserSignupValidator implements Validator {
     }
 
     private void validateEmail(Errors errors, UserSignupForm userSignupForm) {
-        if(userService.getUserByEmail(userSignupForm.getEmail()) != null) {
+        if(userService.getUser(userSignupForm.getEmail()) != null) {
             errors.rejectValue("email", "email.exists", "User with this email address already exists");
         }
     }

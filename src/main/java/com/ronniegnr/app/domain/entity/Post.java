@@ -1,5 +1,6 @@
 package com.ronniegnr.app.domain.entity;
 
+import com.ronniegnr.app.domain.form.PostAdminForm;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;

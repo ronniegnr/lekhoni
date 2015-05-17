@@ -8,12 +8,13 @@ import java.util.List;
 
 public interface UserService {
 
-    User getUserById(int id);
-    User getUserByEmail(String email);
+    User getUser(int id);
+    UserAdminForm getUserAdminForm(int id);
+    User getUser(String email);
     List<User> getAllUser();
 
     void createUser(UserSignupForm userSignupForm);
-    void createOrUpdateUser(UserAdminForm userAdminForm);
-    void saveUser(User user);
+    User save(User user);
+    User save(UserAdminForm userAdminForm);
     void deleteUser(int id);
 }

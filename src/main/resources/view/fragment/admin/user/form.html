@@ -33,6 +33,9 @@
                 </div>
                 <div class="form-group">
                     <input class="btn btn-theme pull-left" type="submit" />
+                    <div th:if="${userAdminForm.id != 0}" th:remove="tag">
+                        <a class="btn btn-theme pull-right" th:href="@{/admin/user/delete/} + ${userAdminForm.id}">Delete User</a>
+                    </div>
                 </div>
             </div>
         </form>

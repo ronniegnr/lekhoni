@@ -40,8 +40,7 @@ public class AdminUserController {
 
     @RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
     public String edit(@PathVariable(value = "id") int id, Model model) {
-        UserAdminForm userAdminForm = userService.getUserById(id).toUserAdminForm();
-        model.addAttribute("userAdminForm", userService.getUserById(id).toUserAdminForm());
+        model.addAttribute("userAdminForm", userService.getUserAdminForm(id));
         return this.VIEW_PATH + "edit";
     }
 
@@ -51,7 +50,7 @@ public class AdminUserController {
             return this.VIEW_PATH + (userAdminForm.getId() == 0 ? "entry" : "edit");
         }
         else {
-            userService.createOrUpdateUser(userAdminForm);
+            userService.save(userAdminForm);
             return "redirect:" + this.LIST_PAGE;
         }
     }

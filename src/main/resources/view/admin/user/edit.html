@@ -17,19 +17,7 @@
             </div>
 
             <div class="col-lg-4">
-                <aside class="right-sidebar">
-                    <div class="widget">
-                        <input class="form-control" type="text" placeholder="Search Post..." />
-                    </div>
-                    <div class="widget">
-                        <h5 class="widgetheading">Links</h5>
-                        <ul class="cat">
-                            <li><i class="icon-angle-right"></i><a th:href="@{/admin/user/list}">Admin Panel</a></li>
-                            <li><i class="icon-angle-right"></i><a th:href="@{/admin/user/list}">List</a></li>
-                            <li><i class="icon-angle-right"></i><a th:href="@{/admin/user/delete/} + ${userAdminForm.id}">Delete</a></li>
-                        </ul>
-                    </div>
-                </aside>
+                <div th:replace="fragment/admin/right :: right('user')"></div>
             </div>
 
         </div>

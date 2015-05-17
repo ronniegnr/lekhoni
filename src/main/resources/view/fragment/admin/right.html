@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<aside class="right-sidebar" th:fragment="right(module)">
+    <div class="widget">
+        <input class="form-control" type="text" placeholder="Search Post..." />
+    </div>
+    <div class="widget">
+        <h5 class="widgetheading">Admin Panel</h5>
+        <ul class="cat">
+            <li><i class="icon-angle-right"></i><a th:href="@{/admin/post/list}">Post</a></li>
+            <li><i class="icon-angle-right"></i><a th:href="@{/admin/tag/list}">Tag</a></li>
+            <li><i class="icon-angle-right"></i><a th:href="@{/admin/user/list/}">User</a></li>
+        </ul>
+        <h5 class="widgetheading" th:text="${module}">module</h5>
+        <ul class="cat">
+            <li><i class="icon-angle-right"></i><a th:href="@{/admin/__${module}__/list}">List</a></li>
+            <li><i class="icon-angle-right"></i><a th:href="@{/admin/__${module}__/entry}">Entry</a></li>
+        </ul>
+    </div>
+</aside>
+
+</html>

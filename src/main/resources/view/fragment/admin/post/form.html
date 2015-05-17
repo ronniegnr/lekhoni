@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html layout:decorator="layout/layout" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-    <div class="row" th:fragment="form(post)">
-        <form action="#" th:action="@{/admin/post/save/} + *{id}" th:object="${post}" method="post">
+    <div class="row" th:fragment="form(postAdminForm)">
+        <form action="#" th:action="@{/admin/post/save/} + *{id}" th:object="${postAdminForm}" method="post">
             <div class="col-lg-12">
                 <div class="form-group">
                     <label for="title">Post Title</label>
@@ -15,6 +15,10 @@
                     <div th:if="${#fields.hasErrors('value')}" th:errors="*{value}" class="alert alert-danger margintop10"></div>
                 </div>
                 <div class="form-group">
+                    <label for="tagIds">Tag Id's</label>
+                    <input type="text" id="tagIds" name="tagIds" th:field="*{tagIds}" class="form-control" placeholder="Tag Ids" />
+                </div>
+                <div class="form-group">
                     <label for="status">Status</label>
                     <select id="status" name="status" th:field="*{status}" >
                         <option value="INACTIVE">INACTIVE</option>
@@ -23,6 +27,9 @@
                 </div>
                 <div class="form-group">
                     <input class="btn btn-theme pull-left" type="submit" />
+                    <div th:if="${postAdminForm.id != 0}" th:remove="tag">
+                        <a class="btn btn-theme pull-right" th:href="@{/admin/post/delete/} + ${postAdminForm.id}">Delete Post</a>
+                    </div>
                 </div>
             </div>
         </form>

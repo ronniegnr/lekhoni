@@ -1,5 +1,6 @@
 package com.ronniegnr.app.service;
 
+import com.ronniegnr.app.domain.adapter.UserAdapter;
 import com.ronniegnr.app.domain.entity.User;
 import com.ronniegnr.app.domain.form.UserAdminForm;
 import com.ronniegnr.app.domain.form.UserSignupForm;
@@ -18,14 +19,21 @@ class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserAdapter userAdapter;
 
     @Override
-    public User getUserById(int id) {
+    public User getUser(int id) {
         return userRepository.findOne(id);
     }
 
     @Override
-    public User getUserByEmail(String email) {
+    public UserAdminForm getUserAdminForm(int id) {
+        return userAdapter.toUserAdminForm(getUser(id));
+    }
+
+    @Override
+    public User getUser(String email) {
         return userRepository.findByEmail(email);
     }
 
@@ -41,30 +49,19 @@ class UserServiceImpl implements UserService {
         user.setEmail(userSignupForm.getEmail());
         user.setPhone(userSignupForm.getPhone());
         user.setPassword(new BCryptPasswordEncoder().encode(userSignupForm.getPassword()));
-        saveUser(user);
+        save(user);
     }
 
     @Override
-    public void createOrUpdateUser(UserAdminForm userAdminForm) {
-        User user = new User();
-
-        if(userAdminForm.getId() != 0) {
-            user = getUserById(userAdminForm.getId());
-        }
-        user.setName(userAdminForm.getName());
-        user.setEmail(userAdminForm.getEmail());
-        user.setPhone(userAdminForm.getPhone());
-        user.setStatus(userAdminForm.getStatus());
-        if(!userAdminForm.getPassword().isEmpty()) {
-            user.setPassword(new BCryptPasswordEncoder().encode(userAdminForm.getPassword()));
-        }
-        saveUser(user);
-    }
-
-    @Override
-    public void saveUser(User user) {
+    public User save(User user) {
         user.setUpdated(new Timestamp(new Date().getTime()));
-        userRepository.save(user);
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User save(UserAdminForm userAdminForm) {
+        User user = userAdapter.toUser(userAdminForm);
+        return userRepository.save(user);
     }
 
     @Override

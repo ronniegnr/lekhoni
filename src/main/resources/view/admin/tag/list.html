@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html layout:decorator="layout/layout" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <title>Admin User List</title>
+    <title>Admin Tag List</title>
 </head>
 <body>
 
@@ -11,42 +11,38 @@
             <div class="col-lg-8">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3>User List</h3>
+                        <h3>Tag List</h3>
                     </div>
                     <div class="col-lg-12">
                         <table>
                             <tr>
                                 <th>Srl</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Type</th>
-                                <th>Status</th>
-                                <th>Join Date</th>
+                                <th>Tag Name</th>
+                                <th>Tag Value</th>
+                                <th>Created</th>
+                                <th>Last Updated</th>
                             </tr>
-                            <tr th:each="user, iterStat : ${users}" th:id="${user.id}" class="cursor-pointer">
+                            <tr th:each="tag, iterStat : ${tags}" th:id="${tag.id}" class="cursor-pointer">
                                 <td th:text="${iterStat.count}"></td>
-                                <td th:text="${user.name}"></td>
-                                <td th:text="${user.email}"></td>
-                                <td th:text="${user.phone}"></td>
-                                <td th:text="${user.role}"></td>
-                                <td th:text="${user.status}"></td>
-                                <td th:text="${{user.created}}"></td>
+                                <td th:text="${tag.name}"></td>
+                                <td th:text="${tag.Value}"></td>
+                                <td th:text="${{tag.created}}"></td>
+                                <td th:text="${{tag.updated}}"></td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
-            <script type="text/javascript">
+            <script th:inline="javascript">
                 $(document).ready(function(){
                     $('.cursor-pointer').click(function(){
-                        window.location = '/admin/user/edit/' + $(this).attr('id');
+                        window.location = '/admin/tag/edit/' + $(this).attr('id');
                     });
                 });
             </script>
 
             <div class="col-lg-4">
-                <div th:replace="fragment/admin/right :: right('user')"></div>
+                <div th:replace="fragment/admin/right :: right('tag')"></div>
             </div>
 
         </div>
