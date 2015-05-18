@@ -149,7 +149,7 @@ public class Post {
     @Transient
     public String getValueShort() {
         int valueLength = getValue().length();
-        return getValue().substring(0, valueLength > 500 ? 500 : valueLength) + "...";
+        return getValue().substring(0, valueLength > 800 ? 800 : valueLength) + "...";
     }
 
     @Transient

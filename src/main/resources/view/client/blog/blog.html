@@ -33,7 +33,7 @@
                     <div th:replace="fragment/pager :: pager(${pagedPosts})"></div>
                 </div>
 
-                <div th:replace="fragment/blog/right :: right"></div>
+                <div th:replace="fragment/blog/right :: right(${tags})"></div>
 
             </div>
         </div>

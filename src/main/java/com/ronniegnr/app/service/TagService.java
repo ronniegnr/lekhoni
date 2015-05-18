@@ -15,12 +15,12 @@ public class TagService {
     @Autowired
     private TagRepository tagRepository;
 
-    public Tag getTag(int id) {
-        return tagRepository.findOne(id);
-    }
-
     public List<Tag> getAllTag() {
         return (List<Tag>)tagRepository.findAll();
+    }
+
+    public Tag getTag(int id) {
+        return tagRepository.findOne(id);
     }
 
     public Tag getTag(String value) {
@@ -30,6 +30,10 @@ public class TagService {
     public Tag save(Tag tag) {
         tag.setUpdated(new Timestamp(new Date().getTime()));
         return tagRepository.save(tag);
+    }
+
+    public List<Tag> getTagsWithPostCount() {
+        return tagRepository.findById(0);
     }
 
     public void delete(int id) {

@@ -19,6 +19,7 @@ public class Tag {
     private Timestamp updated;
 
     private List<Post> posts;
+    private int postCount;
 
     public Tag() {
         this.created = this.updated = new Timestamp(new Date().getTime());
@@ -86,6 +87,15 @@ public class Tag {
         this.posts = posts;
     }
 
+    @Transient
+    public int getPostCount() {
+        return getPosts().size();
+    }
+
+    public void setPostCount(int postCount) {
+        this.postCount = postCount;
+    }
+
     @Override
     public String toString() {
         return "Tag{" +
@@ -95,6 +105,7 @@ public class Tag {
             ", created=" + created +
             ", updated=" + updated +
             ", posts=" + posts +
+            ", postCount=" + postCount +
             '}';
     }
 }
