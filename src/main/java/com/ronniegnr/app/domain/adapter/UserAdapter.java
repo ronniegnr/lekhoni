@@ -2,11 +2,16 @@ package com.ronniegnr.app.domain.adapter;
 
 import com.ronniegnr.app.domain.entity.User;
 import com.ronniegnr.app.domain.form.UserAdminForm;
+import com.ronniegnr.app.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserAdapter {
+
+    @Autowired
+    private UserService userService;
 
     public UserAdminForm toUserAdminForm(User user) {
         UserAdminForm userAdminForm = new UserAdminForm();
@@ -21,7 +26,11 @@ public class UserAdapter {
     }
 
     public User toUser(UserAdminForm userAdminForm) {
-        User user = new User();
+        User user = userService.getUser(userAdminForm.getId());
+
+        if(user == null) {
+            user = new User();
+        }
 
         user.setId(userAdminForm.getId());
         user.setName(userAdminForm.getName());

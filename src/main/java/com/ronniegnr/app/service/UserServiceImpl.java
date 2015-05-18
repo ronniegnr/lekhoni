@@ -61,7 +61,7 @@ class UserServiceImpl implements UserService {
     @Override
     public User save(UserAdminForm userAdminForm) {
         User user = userAdapter.toUser(userAdminForm);
-        return userRepository.save(user);
+        return save(user);
     }
 
     @Override
