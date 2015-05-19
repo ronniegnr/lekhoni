@@ -32,10 +32,6 @@ public class TagService {
         return tagRepository.save(tag);
     }
 
-    public List<Tag> getTagsWithPostCount() {
-        return tagRepository.findById(0);
-    }
-
     public void delete(int id) {
         tagRepository.delete(id);
     }

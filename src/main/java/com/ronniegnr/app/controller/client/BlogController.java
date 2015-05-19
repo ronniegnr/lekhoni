@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -28,9 +29,10 @@ public class BlogController {
     private static final String BLOG_PAGE = VIEW_PATH + "blog";
     private static final String POST_PAGE = VIEW_PATH + "post";
 
+
     @ModelAttribute(value = "tags")
     public List<Tag> TagsWithPostCount() {
-        return tagService.getTagsWithPostCount();
+        return tagService.getAllTag();
     }
 
     @RequestMapping(value = "blog")
@@ -45,9 +47,9 @@ public class BlogController {
         return BLOG_PAGE;
     }
 
-    @RequestMapping(value = "blog/{tagName}/{pageNo}")
-    public String blog2(@PathVariable(value = "tagName") String tagName, @PathVariable(value = "pageNo") int pageNo, Model model) {
-        PageWrapper<Post> pagedPosts = new PageWrapper<Post>(postService.getPagedPost(tagName, Post.Status.ACTIVE, pageNo), "/blog/");
+    @RequestMapping(value = "blog/{tagValue}/{pageNo}")
+    public String blog2(@PathVariable(value = "tagValue") String tagValue, @PathVariable(value = "pageNo") int pageNo, Model model) {
+        PageWrapper<Post> pagedPosts = new PageWrapper<Post>(postService.getPagedPost(tagValue, Post.Status.ACTIVE, pageNo), "/blog/");
         model.addAttribute("pagedPosts", pagedPosts);
         return BLOG_PAGE;
     }

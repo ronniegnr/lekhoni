@@ -12,6 +12,6 @@ import java.util.List;
 public interface PostRepository extends PagingAndSortingRepository<Post, Integer> {
 
     Page<Post> findByStatus(Post.Status status, Pageable pageable);
-    Page<Post> findByStatusAndTags(List<Tag> tags, Post.Status status, Pageable pageable);
+    Page<Post> findByTagsAndStatus(List<Tag> tags, Post.Status status, Pageable pageable);
 
 }

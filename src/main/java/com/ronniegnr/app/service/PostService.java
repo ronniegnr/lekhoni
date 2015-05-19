@@ -48,7 +48,6 @@ public class PostService {
 
     public Page<Post> getPagedPost(Post.Status status, int pageNo) {
         Pageable pageable = new PageRequest(pageNo-1, PER_PAGE_DATA, new Sort(Sort.Direction.DESC, "id"));
-        //return postRepository.findAll(pageable);
         return postRepository.findByStatus(status, pageable);
     }
 
@@ -59,7 +58,7 @@ public class PostService {
         if(tag != null) {
             tags.add(tag);
         }
-        return postRepository.findByStatusAndTags(tags, status, pageable);
+        return postRepository.findByTagsAndStatus(tags, status, pageable);
     }
 
     public Post save(Post post) {
