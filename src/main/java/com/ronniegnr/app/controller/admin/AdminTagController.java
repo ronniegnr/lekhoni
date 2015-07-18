@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/admin/tag/")
+@RequestMapping(value = "/admin/tag")
 public class AdminTagController {
 
     @Autowired
     private TagService tagService;
 
-    private static final String VIEW_PATH = "/admin/tag/";
+    private static final String VIEW_PATH = "admin/tag/";
     private static final String LIST_PAGE = VIEW_PATH + "list";
     private static final String ENTRY_PAGE = VIEW_PATH + "entry";
     private static final String EDIT_PAGE = VIEW_PATH + "edit";

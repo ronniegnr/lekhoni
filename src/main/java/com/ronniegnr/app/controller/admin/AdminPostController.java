@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/admin/post/")
+@RequestMapping(value = "/admin/post")
 public class AdminPostController {
 
     @Autowired
     private PostService postService;
 
-    private static final String VIEW_PATH = "/admin/post/";
+    private static final String VIEW_PATH = "admin/post/";
 
     private static final String LIST_PAGE = VIEW_PATH + "list";
     private static final String ENTRY_PAGE = VIEW_PATH + "entry";

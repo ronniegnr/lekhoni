@@ -17,7 +17,7 @@ import javax.validation.Valid;
 
 
 @Controller
-@RequestMapping(value = "/")
+@RequestMapping(value = "")
 public class AccountController {
 
     @Autowired

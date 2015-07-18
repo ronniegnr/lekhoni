@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 
 @Controller
-@RequestMapping(value = "/admin/user/")
+@RequestMapping(value = "/admin/user")
 public class AdminUserController {
 
     @Autowired
@@ -23,9 +23,9 @@ public class AdminUserController {
 
     private static final String VIEW_PATH = "admin/user/";
 
-    private static final String LIST_PAGE = "/admin/user/list";
-    private static final String ENTRY_PAGE = "/admin/user/entry";
-    private static final String EDIT_PAGE = "/admin/user/edit";
+    private static final String LIST_PAGE = VIEW_PATH + "list";
+    private static final String ENTRY_PAGE = VIEW_PATH + "entry";
+    private static final String EDIT_PAGE = VIEW_PATH + "edit";
 
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public String list(Model model) {

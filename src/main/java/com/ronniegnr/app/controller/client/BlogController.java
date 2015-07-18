@@ -13,11 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/")
+@RequestMapping(value = "")
 public class BlogController {
 
     @Autowired
@@ -25,7 +24,7 @@ public class BlogController {
     @Autowired
     private TagService tagService;
 
-    private static final String VIEW_PATH = "/client/blog/";
+    private static final String VIEW_PATH = "client/blog/";
     private static final String BLOG_PAGE = VIEW_PATH + "blog";
     private static final String POST_PAGE = VIEW_PATH + "post";
 
