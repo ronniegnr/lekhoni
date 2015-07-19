@@ -48,14 +48,14 @@ public class AdminPostController {
         }
         else {
             postService.save(postAdminForm);
-            return "redirect:" + LIST_PAGE;
+            return "redirect:/" + LIST_PAGE;
         }
     }
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable(value = "id") int id) {
         postService.delete(id);
-        return "redirect:" + LIST_PAGE;
+        return "redirect:/" + LIST_PAGE;
     }
 
 }

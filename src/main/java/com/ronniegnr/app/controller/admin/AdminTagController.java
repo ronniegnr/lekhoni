@@ -48,14 +48,14 @@ public class AdminTagController {
         }
         else {
             tagService.save(tag);
-            return "redirect:" + this.LIST_PAGE;
+            return "redirect:/" + this.LIST_PAGE;
         }
     }
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable(value = "id") int id) {
         tagService.delete(id);
-        return "redirect:" + this.LIST_PAGE;
+        return "redirect:/" + this.LIST_PAGE;
     }
 
 }
