@@ -26,6 +26,7 @@
                                         <li><a th:href="@{/blog/__${tag.value}__/1}" th:text="${tag.name}"></a></li>
                                     </div>
                                 </ul>
+                                <span class="pull-right fnt_custom" th:text="'Updated on ' + ${{post.updated}}"></span>
                             </div>
                         </div>
                     </div>

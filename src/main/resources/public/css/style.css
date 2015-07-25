@@ -31,12 +31,19 @@ a:active {
 	clear:both;
 }
 
-h1,h2, h3, h4, h5, h6 {
+h1,h2, h3, h4, h6 {
 	font-family:'Open Sans', Arial, sans-serif;
 	font-weight:700;
 	line-height:1.1em;
 	color:#333;
 	margin-bottom: 20px;
+}
+h5 {
+    font-family:'Open Sans', Arial, sans-serif;
+    font-weight:700;
+    line-height:1.1em;
+    color:#333;
+    margin-top: 20px;
 }
 
 /* ===================================
@@ -1950,4 +1957,11 @@ article img.pull-right, article .align-right{
 
 @media (max-width: 360px) {
 
+}
+
+.fnt_custom {
+    color: #999;
+    float: left;
+    font-size: 12px;
+    font-weight: 600;
 }
