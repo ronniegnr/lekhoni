@@ -18,7 +18,7 @@ public class Comment {
     private int userId;
     private int postId;
     private String content;
-    Status status;
+    private Status status;
     private Timestamp created;
     private Timestamp updated;
 
