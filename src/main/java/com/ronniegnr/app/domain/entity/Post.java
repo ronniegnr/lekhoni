@@ -1,14 +1,10 @@
 package com.ronniegnr.app.domain.entity;
 
-import com.ronniegnr.app.domain.form.PostAdminForm;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.util.Date;
