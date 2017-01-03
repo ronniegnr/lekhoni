@@ -1,5 +1,6 @@
 package com.ronniegnr.app.domain.entity;
 
+import com.github.rjeschke.txtmark.Processor;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,6 +21,7 @@ public class Post {
     private int userId;
     private String title;
     private String value;
+    private String valueHTML;
     private Status status;
     private Timestamp created;
     private Timestamp updated;
@@ -78,6 +80,11 @@ public class Post {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    @Transient
+    public String getValueHTML() {
+        return Processor.process(value);
     }
 
     @NotNull
