@@ -12,9 +12,9 @@
                 <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="alert alert-danger margintop10"></div>
             </div>
             <div class="form-group">
-                <label for="value">Post Content</label>
-                <textarea rows="12" id="value" name="value" th:field="*{value}" class="form-control" placeholder="* Post Content"></textarea>
-                <div th:if="${#fields.hasErrors('value')}" th:errors="*{value}" class="alert alert-danger margintop10"></div>
+                <label for="valueHtml">Post Content</label>
+                <textarea rows="12" id="valueHtml" name="valueHtml" th:field="*{valueHtml}" class="form-control" placeholder="* Post Content"></textarea>
+                <div th:if="${#fields.hasErrors('valueHtml')}" th:errors="*{valueHtml}" class="alert alert-danger margintop10"></div>
             </div>
             <div class="form-group">
                 <label for="tagIds">Tag Id's</label>
@@ -36,8 +36,10 @@
         </div>
 
         <div id="editormd">
-            <textarea name="editormd-md" style="display: none;"></textarea>
+            <textarea name="editormd-md" style="display: none;" th:field="*{valueMarkdown}">
+            </textarea>
         </div>
+        <textarea name="valueMarkdown" style="display: none;"></textarea>
 
     </form>
 
@@ -48,9 +50,12 @@
     <script>
         // after markdown implementation, this wont be needed
         $(document).ready(function () {
-            $('#value').keyup(function () {
+            $('#valueHtml').change(function () {
                 $('#sn-value').html($(this).val());
             })
+            /*$('#valueMarkdown').change(function () {
+                $('#sn-value').html($(this).val());
+            })*/
         })
 
         // initialize editormd markdown editor
@@ -65,8 +70,8 @@
             });
         });
         function submitClick() {
-            //$('#value').html($('.editormd-html-textarea').html());
-            $('#value').html($('.editormd-markdown-textarea').html());
+            $('#valueHtml').html($('.editormd-html-textarea').html());
+            $('#valueMarkdown').html($('.editormd-markdown-textarea').html());
             //return false;
         }
     </script>

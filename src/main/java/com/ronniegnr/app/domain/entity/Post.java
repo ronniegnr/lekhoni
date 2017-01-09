@@ -1,6 +1,5 @@
 package com.ronniegnr.app.domain.entity;
 
-import com.github.rjeschke.txtmark.Processor;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,13 +14,13 @@ import java.util.List;
 @Table(name = "post")
 public class Post {
 
-    public enum Status { ACTIVE, INACTIVE };
+    public enum Status { ACTIVE, INACTIVE }
 
     private int id;
     private int userId;
     private String title;
-    private String value;
-    private String valueHTML;
+    private String valueHtml;
+    private String valueMarkdown;
     private Status status;
     private Timestamp created;
     private Timestamp updated;
@@ -73,18 +72,23 @@ public class Post {
 
     @NotBlank
     @Length(max = 65535)
-    @Column(name = "value")
-    public String getValue() {
-        return value;
+    @Column(name = "value_html")
+    public String getValueHtml() {
+        return valueHtml;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setValueHtml(String valueHtml) {
+        this.valueHtml = valueHtml;
     }
 
-    @Transient
-    public String getValueHTML() {
-        return Processor.process(value);
+    @Length(max = 65535)
+    @Column(name = "value_markdown")
+    public String getValueMarkdown() {
+        return valueMarkdown;
+    }
+
+    public void setValueMarkdown(String valueMarkdown) {
+        this.valueMarkdown = valueMarkdown;
     }
 
     @NotNull
@@ -151,8 +155,8 @@ public class Post {
 
     @Transient
     public String getValueShort() {
-        int valueLength = getValue().length();
-        return getValue().substring(0, valueLength > 800 ? 800 : valueLength) + "...";
+        int valueLength = getValueHtml().length();
+        return getValueHtml().substring(0, valueLength > 800 ? 800 : valueLength) + "...";
     }
 
     @Transient
@@ -166,7 +170,8 @@ public class Post {
             "id=" + id +
             ", userId=" + userId +
             ", title='" + title + '\'' +
-            ", content='" + value + '\'' +
+            ", valueHtml='" + valueHtml + '\'' +
+            ", valueMarkdown='" + valueMarkdown + '\'' +
             ", status=" + status +
             ", created=" + created +
             ", updated=" + updated +

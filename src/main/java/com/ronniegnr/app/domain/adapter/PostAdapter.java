@@ -24,7 +24,8 @@ public class PostAdapter {
 
         postAdminForm.setId(post.getId());
         postAdminForm.setTitle(post.getTitle());
-        postAdminForm.setValue(post.getValue());
+        postAdminForm.setValueHtml(post.getValueHtml());
+        postAdminForm.setValueMarkdown(post.getValueMarkdown());
         postAdminForm.setStatus(post.getStatus());
 
         String tagIds = new String();
@@ -45,7 +46,8 @@ public class PostAdapter {
 
         post.setId(postAdminForm.getId());
         post.setTitle(postAdminForm.getTitle());
-        post.setValue(postAdminForm.getValue());
+        post.setValueHtml(postAdminForm.getValueHtml());
+        post.setValueMarkdown(postAdminForm.getValueMarkdown());
         post.setStatus(postAdminForm.getStatus());
 
         List<Tag> tags = new ArrayList<Tag>();

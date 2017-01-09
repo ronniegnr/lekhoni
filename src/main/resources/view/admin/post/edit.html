@@ -9,14 +9,14 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-lg-8">
+            <div class="col-lg-10">
                 <div class="col-lg-12">
                     <h3>Post Edit</h3>
                 </div>
                 <div th:replace="fragment/admin/post/form :: form(${postAdminForm})"></div> <!-- form.action: admin/post/save/{id}, form.method: post -->
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-2">
                 <div th:replace="fragment/admin/right :: right('post')"></div>
             </div>
 

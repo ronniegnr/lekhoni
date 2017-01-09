@@ -10,7 +10,8 @@ public class PostAdminForm {
 
     private int id;
     private String title;
-    private String value;
+    private String valueHtml;
+    private String valueMarkdown;
     private Post.Status status;
     private String tagIds;
 
@@ -33,12 +34,20 @@ public class PostAdminForm {
     }
 
     @NotBlank
-    public String getValue() {
-        return value;
+    public String getValueHtml() {
+        return valueHtml;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setValueHtml(String valueHtml) {
+        this.valueHtml = valueHtml;
+    }
+
+    public String getValueMarkdown() {
+        return valueMarkdown;
+    }
+
+    public void setValueMarkdown(String valueMarkdown) {
+        this.valueMarkdown = valueMarkdown;
     }
 
     @NotNull
@@ -63,7 +72,8 @@ public class PostAdminForm {
         return "PostAdminForm{" +
             "id=" + id +
             ", title='" + title + '\'' +
-            ", value='" + value + '\'' +
+            ", valueHtml='" + valueHtml + '\'' +
+            ", valueMarkdown='" + valueMarkdown + '\'' +
             ", status=" + status +
             ", tagIds='" + tagIds + '\'' +
             '}';

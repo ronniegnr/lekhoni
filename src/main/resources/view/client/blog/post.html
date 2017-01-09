@@ -15,7 +15,7 @@
                             <div class="post-heading">
                                 <h3 th:text="${post.title}"></h3>
                             </div>
-                            <p th:utext="${post.valueHTML}"></p>
+                            <p th:utext="${post.valueHtml}"></p>
                             <div class="bottom-article">
                                 <ul class="meta-post">
                                     <li><a th:href="@{/blog/post/} + ${post.id}" th:text="${{post.created}}"></a></li>
