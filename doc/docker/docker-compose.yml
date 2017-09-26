@@ -1,0 +1,44 @@
+version: "3"
+services:
+  lekhoni:
+    image: lekhoni:one
+    ports:
+      - "9229:9229"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: "0.2"
+          memory: 500M
+    environment:
+        LEKHONI_DB: blognrdb
+        LEKHONI_DB_USERNAME: root
+        LEKHONI_DB_PASSWORD: toor
+        LEKHONI_DB_HOST: lekhoni-mysql
+    networks:
+      - webnet
+    depends_on:
+      - lekhoni-mysql
+
+  lekhoni-mysql:
+    image: mysql:5.7.13
+    restart: always
+    ports:
+#      - "33061:3306" # Enable It If you want to access by localhost ip.
+      - "3306"
+    volumes:
+      - lekhonidb_data:/var/lib/mysql
+    environment:
+       MYSQL_USER: root
+       MYSQL_ROOT_PASSWORD: toor
+       MYSQL_DATABASE: blognrdb
+    command: mysqld --lower_case_table_names=1 --skip-ssl
+    networks:
+      - webnet
+
+networks:
+    webnet:
+volumes:
+    lekhonidb_data:

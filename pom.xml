@@ -112,8 +112,33 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.2.3.v20140905</version>
             </plugin>
+
+	    <!-- MVN DOCKER -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>${docker-maven-plugin.version}</version>
+                <configuration>
+                    <imageName>lekhoni:one</imageName>
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
+
+	<!-- MAVEN DOCKER PROPERTY -->
+    <properties>
+        <docker-maven-plugin.version>0.4.13</docker-maven-plugin.version>
+    </properties>
+
 
     <!--<repositories>-->
         <!--<repository>-->
